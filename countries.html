@@ -90,6 +90,35 @@
     background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;
     font-size:22px;box-shadow:0 6px 16px rgba(0,0,0,.2);z-index:30;
   }
+
+  /* nav menu */
+  .burger{cursor:pointer;}
+  .nav-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .nav-overlay.open{opacity:1;pointer-events:auto;}
+  .nav-menu{
+    position:fixed;top:0;right:-280px;width:260px;max-width:80%;height:100%;
+    background:#fff;z-index:50;box-shadow:-6px 0 24px rgba(0,0,0,.18);
+    transition:right .28s ease;overflow-y:auto;
+  }
+  .nav-menu.open{right:0;}
+  .nav-menu-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px;border-bottom:1px solid var(--border);
+  }
+  .nav-menu-header img{height:36px;width:auto;}
+  .nav-close{
+    width:34px;height:34px;border:1px solid #ddd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:16px;color:#666;cursor:pointer;
+  }
+  .nav-links{padding:8px 0;}
+  .nav-links a{
+    display:block;padding:15px 20px;font-size:15px;color:var(--text);
+    border-bottom:1px solid #f2f2f2;text-align:right;
+  }
+  .nav-links a.active{color:var(--gold-dark);font-weight:700;background:#faf8f3;}
 </style>
 </head>
 <body>
@@ -102,11 +131,28 @@
 </div>
 
 <header>
-  <div class="burger"><span></span><span></span><span></span></div>
+  <div class="burger" id="navBurger" onclick="openNav()"><span></span><span></span><span></span></div>
   <a href="index.html" class="brand">
     <img class="brand-logo" src="images/logo.png" alt="شركة ساعد للاستقدام - شركة ساعد .. ساعدك اليمين">
   </a>
 </header>
+
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+<nav class="nav-menu" id="navMenu">
+  <div class="nav-menu-header">
+    <img src="images/logo.png" alt="شركة ساعد للاستقدام">
+    <button class="nav-close" onclick="closeNav()" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">الرئيسية</a>
+    <a href="all-workers.html">كل العاملات</a>
+    <a href="countries.html" class="active">دول الاستقدام</a>
+    <a href="rental.html">طلب إيجار</a>
+    <a href="service-move.html">طلب نقل خدمات</a>
+    <a href="track-order.html">تتبع طلبك</a>
+    <a href="services.html">خدماتنا</a>
+  </div>
+</nav>
 
 <div class="breadcrumb"><a href="index.html">الرئيسية</a> / دول الاستقدام</div>
 
@@ -176,5 +222,16 @@
 
 <a class="headset-fab" href="https://wa.me/966580068018">🎧</a>
 
+
+<script>
+  function openNav(){
+    document.getElementById('navMenu').classList.add('open');
+    document.getElementById('navOverlay').classList.add('open');
+  }
+  function closeNav(){
+    document.getElementById('navMenu').classList.remove('open');
+    document.getElementById('navOverlay').classList.remove('open');
+  }
+</script>
 </body>
 </html>
