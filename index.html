@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شركة ساعد للاستقدام -     الرئيسية</title>
+<style>
+  :root{
+    --gold:#a89056;
+    --gold-dark:#8f7943;
+    --navy:#233b4d;
+    --navy-2:#3c5568;
+    --mint:#eef6f1;
+    --pill:#dde9ef;
+    --border:#e2e2e2;
+    --text:#3a3a3a;
+    --muted:#7a7a7a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Tahoma","Segoe UI",Arial,sans-serif;
+    color:var(--text);
+    background:#fff;
+    max-width:480px;
+    margin:0 auto;
+    position:relative;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  select{font-family:inherit;}
+
+  /* fake browser bar */
+  .browserbar{
+    display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f1f3f4;
+    font-size:13px;color:#444;border-bottom:1px solid #ddd;
+  }
+  .browserbar .url{
+    flex:1;background:#fff;border-radius:20px;padding:8px 14px;color:#555;
+    display:flex;align-items:center;gap:6px;
+  }
+
+  /* topbar */
+  .topbar{
+    background:var(--gold);color:#fff;text-align:center;padding:10px 16px 6px;
+    font-size:13px;line-height:1.6;
+  }
+  .topbar .social{
+    display:flex;justify-content:center;gap:10px;margin-top:8px;font-size:16px;
+  }
+  .topbar .social span{opacity:.5;}
+
+  /* header */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px;background:#fff;border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:20;
+  }
+  .burger{
+    width:44px;height:40px;border:1px solid #ddd;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;
+  }
+  .burger span{width:18px;height:2px;background:#444;display:block;}
+  .brand{display:flex;align-items:center;}
+  .brand-logo{height:44px;width:auto;}
+
+  /* hero */
+  .hero{
+    position:relative;padding:70px 20px 90px;text-align:center;color:#fff;
+    background:linear-gradient(180deg, rgba(35,59,77,.55), rgba(35,59,77,.75)), url('images/hero-bg.jpg') center/cover no-repeat;
+  }
+  .hero h1{font-size:24px;margin-bottom:22px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .hero-actions a{
+    background:var(--gold);color:#fff;padding:10px 18px;border-radius:22px;font-size:13px;font-weight:700;
+  }
+  .hero-actions a.outline{background:transparent;border:1.3px solid rgba(255,255,255,.7);}
+
+  section{padding:34px 20px;}
+
+  .center{text-align:center;}
+  .eyebrow{color:var(--muted);font-size:15px;margin-bottom:14px;}
+  h2.title{font-size:22px;color:var(--text);margin-bottom:10px;}
+  p.subtitle{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:10px;}
+
+  /* filter card */
+  .filter-wrap{padding:24px 18px;}
+  .filter-card{
+    border:1px solid var(--border);border-radius:10px;padding:20px 16px;
+    position:relative;overflow:hidden;
+  }
+  .dot{position:absolute;width:10px;height:10px;border-radius:50%;opacity:.5;}
+  .dot.d1{background:#a9d8e6;top:14px;right:20px;}
+  .dot.d2{background:#f0c48a;top:60px;left:16px;}
+  .dot.d3{background:#b7d9c5;bottom:20px;right:40px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:14px;color:var(--text);margin-bottom:8px;text-align:right;}
+  .field select{
+    width:100%;padding:12px 14px;border:1px solid #ccc;border-radius:8px;font-size:14px;
+    color:var(--text);background:#fff;appearance:none;
+  }
+  .search-btn{
+    width:100%;background:var(--gold);color:#fff;border:none;padding:13px;border-radius:8px;
+    font-size:15px;font-weight:700;margin-top:4px;
+  }
+
+  /* countries */
+  .country{text-align:center;padding:30px 20px;}
+  .flag-circle{
+    width:90px;height:90px;border-radius:50%;overflow:hidden;margin:0 auto 14px;
+    border:1px solid var(--border);
+  }
+  .flag-circle img{width:100%;height:100%;object-fit:cover;}
+  .pill{
+    display:inline-block;background:var(--pill);color:var(--navy);font-size:13px;
+    padding:5px 16px;border-radius:20px;margin-bottom:12px;
+  }
+  .price{font-size:20px;color:var(--text);margin-bottom:16px;}
+  .btn-outline{
+    display:inline-block;border:1.4px solid var(--gold);color:var(--gold-dark);
+    padding:10px 26px;border-radius:24px;font-size:14px;font-weight:700;
+  }
+  .btn-dark{
+    display:block;width:fit-content;margin:0 auto;background:#4b4b4b;color:#fff;
+    padding:11px 22px;border-radius:24px;font-size:14px;font-weight:600;
+  }
+
+  /* services */
+  .service-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:34px;position:relative;}
+  .service-item .blob{
+    position:absolute;inset:-10px -14px auto auto;width:120px;height:120px;
+    background:var(--mint);border-radius:50%;z-index:-1;opacity:.7;
+  }
+  .service-icon{
+    width:44px;height:44px;flex:none;color:var(--navy);
+  }
+  .service-body{flex:1;}
+  .service-body .pill{background:var(--gold);color:#fff;}
+  .service-body p{font-size:14px;color:var(--text);line-height:1.8;margin-top:8px;}
+  .all-services-btn{
+    display:block;width:fit-content;background:#5a5a5a;color:#fff;padding:11px 24px;
+    border-radius:24px;font-size:14px;font-weight:600;margin:10px auto 0;
+  }
+
+  /* stats */
+  .stats-wrap{background:var(--mint);}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;text-align:center;margin-top:26px;}
+  .stat-num{font-size:22px;font-weight:800;color:var(--navy-2);}
+  .stat-label{font-size:14px;color:var(--muted);margin-top:6px;}
+
+  /* about */
+  .about-eyebrow{color:var(--muted);font-size:15px;margin-bottom:10px;}
+  .about ul{margin-top:20px;text-align:right;}
+  .about ul li{font-size:14px;color:var(--text);padding:8px 0;line-height:1.8;}
+
+  /* partners */
+  .partners-wrap{
+    background:#f4efe4 url('') center/cover;padding:40px 20px;text-align:center;
+  }
+  .partners-row{display:flex;justify-content:center;gap:14px;align-items:center;flex-wrap:nowrap;}
+  .partners-row img{height:auto;width:31%;max-width:110px;object-fit:contain;}
+
+  /* customer service cards */
+  .cs-card{text-align:center;padding:30px 20px;border-top:1px solid #f2f2f2;}
+  .cs-avatar{
+    width:90px;height:90px;border-radius:50%;background:#eef2f5;margin:0 auto 14px;
+    display:flex;align-items:center;justify-content:center;font-size:38px;
+  }
+  .cs-name{
+    display:inline-block;background:var(--pill);color:var(--navy);font-size:13px;
+    padding:5px 18px;border-radius:20px;margin-bottom:14px;
+  }
+  .cs-card h4{font-size:15px;font-weight:400;margin-bottom:16px;color:var(--text);}
+  .cs-links{display:flex;justify-content:center;gap:12px;}
+  .cs-links a{
+    width:100px;padding:10px 0;border:1.3px solid var(--gold);border-radius:24px;
+    display:flex;align-items:center;justify-content:center;color:var(--gold-dark);font-size:18px;
+  }
+
+  /* contact */
+  .map-frame iframe{width:100%;height:200px;border:0;}
+  .contact-intro{padding:22px 20px 10px;text-align:center;}
+  .contact-row{
+    display:flex;align-items:center;justify-content:space-between;padding:16px 20px;
+    border-top:1px solid #eee;
+  }
+  .contact-row .label{font-size:13px;color:var(--muted);margin-bottom:4px;}
+  .contact-row .value{font-size:14px;color:var(--text);}
+  .contact-icon{
+    width:44px;height:44px;background:var(--navy-2);border-radius:8px;color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:18px;flex:none;
+  }
+
+  /* footer */
+  footer{background:var(--navy-2);color:#fff;padding:36px 20px 24px;text-align:center;}
+  footer h3{font-size:16px;margin-bottom:16px;}
+  footer .flogo{width:56px;height:56px;margin:0 auto 16px;}
+  footer p{font-size:13px;color:#cfd9df;line-height:1.9;margin-bottom:18px;}
+  .fsocial{display:flex;justify-content:center;gap:12px;margin-bottom:26px;}
+  .fsocial a{
+    width:38px;height:38px;background:#fff;border-radius:8px;color:var(--navy-2);
+    display:flex;align-items:center;justify-content:center;font-size:16px;
+  }
+  footer h4{font-size:15px;margin-bottom:14px;}
+  footer .fline{font-size:13px;color:#dfe7eb;margin-bottom:10px;line-height:1.8;}
+  .copyright{
+    margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);
+    font-size:12px;color:#a9bdc6;
+  }
+  .copyright a{text-decoration:underline;}
+
+  .headset-fab{
+    position:fixed;bottom:22px;left:16px;width:54px;height:54px;border-radius:50%;
+    background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:22px;box-shadow:0 6px 16px rgba(0,0,0,.2);z-index:30;
+  }
+</style>
+</head>
+<body>
+
+<div class="browserbar">
+  <span>⋮</span><span>▭</span><span>+</span>
+  <div class="url">🔒 saaid-sa.com</div>
+  <span>⌂</span>
+</div>
+
+<div class="topbar">
+  🏠 المملكة العربية السعودية - مرخصة من وزارة الموارد البشرية و منصة مساند بترخيص رقم 52
+  <div class="social">
+    <span>◎</span><span>👻</span><span>♪</span><span>▶</span><span>𝕏</span>
+  </div>
+</div>
+
+<header>
+  <div class="burger"><span></span><span></span><span></span></div>
+  <a href="index.html" class="brand">
+    <img class="brand-logo" src="images/logo.png" alt="شركة ساعد للاستقدام - شركة ساعد .. ساعدك اليمين">
+  </a>
+</header>
+
+<div class="hero">
+  <h1>ساعد ... ساعدك اليمين</h1>
+  <div class="hero-actions">
+    <a href="#">طلب استقدام</a>
+    <a class="outline" href="#">طلب إيجار</a>
+    <a class="outline" href="#">طلب نقل خدمات</a>
+    <a class="outline" href="#">تتبع طلبك</a>
+  </div>
+</div>
+
+<!-- Filter -->
+<div class="filter-wrap">
+  <div class="filter-card">
+    <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
+    <div class="field">
+      <label>الجنسية</label>
+      <select><option>جميع الجنسيات</option></select>
+    </div>
+    <div class="field">
+      <label>العمر المطلوب</label>
+      <select><option>جميع الاعمار</option></select>
+    </div>
+    <div class="field">
+      <label>المهنة المطلوبة</label>
+      <select><option>جميع المهن</option></select>
+    </div>
+    <div class="field" style="margin-bottom:20px;">
+      <label>الديانة</label>
+      <select><option>جميع الديانات</option></select>
+    </div>
+    <button class="search-btn">إبحث</button>
+  </div>
+</div>
+
+<!-- Countries -->
+<section class="center" style="padding-bottom:0;">
+  <h2 class="title">دول الاستقدام</h2>
+  <p class="subtitle">تعرف علي الدول و اسعار الاستقدام الان</p>
+</section>
+
+<div class="country">
+  <div class="flag-circle"><img src="images/flag-india.png" alt="الهند"></div>
+  <div class="pill">الهند</div>
+  <div class="price">3900 ريال سعودي</div>
+  <a class="btn-outline" href="#">اطلب الآن</a>
+</div>
+<div class="country">
+  <div class="flag-circle"><img src="images/flag-bangladesh.png" alt="بنجلاديش"></div>
+  <div class="pill">بنجلاديش</div>
+  <div class="price">7496 ريال سعودي</div>
+  <a class="btn-outline" href="#">اطلب الآن</a>
+</div>
+<div class="country">
+  <div class="flag-circle"><img src="images/flag-burundi.png" alt="بوروندي"></div>
+  <div class="pill">بوروندي</div>
+  <div class="price">5196 ريال سعودي</div>
+  <a class="btn-outline" href="#">اطلب الآن</a>
+</div>
+<div class="country">
+  <div class="flag-circle"><img src="images/flag-ethiopia.png" alt="إثيوبيا"></div>
+  <div class="pill">إثيوبيا</div>
+  <div class="price">3777 ريال سعودي</div>
+  <a class="btn-outline" href="#">اطلب الآن</a>
+</div>
+<div class="country">
+  <div class="flag-circle"><img src="images/flag-srilanka.png" alt="سيريلانكا"></div>
+  <div class="pill">سيريلانكا</div>
+  <div class="price">14290 ريال سعودي</div>
+  <a class="btn-outline" href="#">اطلب الآن</a>
+</div>
+<div class="country">
+  <div class="flag-circle"><img src="images/flag-philippines.png" alt="الفلبين"></div>
+  <div class="pill">الفلبين</div>
+  <div class="price">14896 ريال سعودي</div>
+  <a class="btn-outline" href="#">اطلب الآن</a>
+</div>
+<div class="country">
+  <div class="flag-circle"><img src="images/flag-kenya.png" alt="كينيا"></div>
+  <div class="pill">كينيا</div>
+  <div class="price">5696 ريال سعودي</div>
+  <a class="btn-outline" href="#">اطلب الآن</a>
+</div>
+<div class="country" style="padding-top:6px;">
+  <a class="btn-dark" href="#">جميع دول الاستقدام</a>
+</div>
+
+<!-- Services -->
+<section>
+  <div class="center" style="margin-bottom:30px;">
+    <h2 class="title">خدماتنا</h2>
+    <p class="subtitle">تعرف علي الخدمات التي نقدمها لعملائنا...</p>
+  </div>
+
+  <div class="service-item">
+    <div class="blob"></div>
+    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 16l20-8-8 20-2-8-8-4z"/></svg>
+    <div class="service-body">
+      <span class="pill">نطاق الخدمات</span>
+      <p>خدماتنا تشمل جميع أنحاء المملكة العربية السعودية</p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <div class="blob"></div>
+    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+    <div class="service-body">
+      <span class="pill">توفير خدمات العمالة المنزلية بنظام الأشهر</span>
+      <p>توفير خدمات العمالة المنزلية بنظام الأشهر وفق باقات متعددة</p>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <div class="blob"></div>
+    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="7" r="3"/><path d="M2 21v-1a6 6 0 0 1 6-6h2"/><path d="M15 10h6M15 14h6M15 18h6"/></svg>
+    <div class="service-body">
+      <span class="pill">تعاقد الاستقدام</span>
+      <p>دفع رسوم الاستقدام عبر التعاقد في برنامج مساند</p>
+    </div>
+  </div>
+
+  <a class="all-services-btn" href="#">كل الخدمات</a>
+</section>
+
+<!-- Stats -->
+<div class="stats-wrap">
+  <section class="center">
+    <h2 class="title">الإحصائيات</h2>
+    <p class="subtitle">إليك بعض إحصائيات العملاء الذين تشرفنا بالعمل معهم</p>
+    <div class="stats-grid">
+      <div><div class="stat-num">70,000</div><div class="stat-label">زوارنا</div></div>
+      <div><div class="stat-num">13,000</div><div class="stat-label">عملائنا</div></div>
+      <div><div class="stat-num">15,000</div><div class="stat-label">عامل وعاملة</div></div>
+      <div><div class="stat-num">10,000</div><div class="stat-label">خدمة العملاء</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- About -->
+<section class="about">
+  <div class="about-eyebrow">ـ من نحن</div>
+  <h2 class="title">شركة ساعد للاستقدام</h2>
+  <p class="subtitle">شركة ساعد للاستقدام من أبرز الشركات المتخصصة في المملكة العربية السعودية في تقديم خدمات توفير العمالة المنزلية الماهرة من كافة الدول المصرح بها وفق منهجية و رؤية متكاملة توفر للعميل كافة الخدمات التي يرغبها في وقت وجيز.</p>
+  <ul>
+    <li>- خدمة عملاء مميزة على مدار اليوم</li>
+    <li>- مرخصين من وزارة الموارد البشريه ومتواجدون في منصة مساند</li>
+    <li>- ضمان العمالة 3 أشهر</li>
+    <li>- إمكانية توصيل العمالة إلى المنزل</li>
+  </ul>
+</section>
+
+<!-- Partners -->
+<div class="partners-wrap">
+  <div class="partners-row">
+    <img src="images/partner1.png" alt="راعي">
+    <img src="images/partner2.png" alt="راعي">
+    <img src="images/partner3.png" alt="راعي">
+  </div>
+</div>
+
+<!-- Customer service -->
+<section class="center" style="padding-bottom:0;">
+  <h2 class="title">خدمة العملاء</h2>
+  <p class="subtitle">يمكنك الان التواصل مع خدمة العملاء في اي وقت</p>
+</section>
+
+<div id="cs-list"></div>
+
+<!-- Contact -->
+<section class="center" style="padding-bottom:0;">
+  <h2 class="title">تواصل معنا</h2>
+  <p class="subtitle">يمكنك الان تواصل معنا علي مدار 24 ساعة</p>
+</section>
+<div class="map-frame">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3622.1268069399935!2d43.99724994062!3d26.073598079043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDQ3JzI4LjAiTiA0NsKwNDYnMDIuNSJF!5e0!3m2!1sen!2ssa!4v1701704321392!5m2!1sen!2ssa" loading="lazy"></iframe>
+</div>
+<div class="contact-intro">
+  <h3 style="font-size:16px;color:var(--text);margin-bottom:8px;">يمكنك اجادنا عبر جميع الوسائل</h3>
+  <p class="subtitle">الساعد للاستقدام معاك اينما كنت، يمكنك التواصل معنا عبر جميع الوسائل او زيارة موقعنا</p>
+</div>
+<div class="contact-row">
+  <div><div class="label">اتصل بنا</div><div class="value">0592902696 - 0592902696</div></div>
+  <div class="contact-icon">📞</div>
+</div>
+<div class="contact-row">
+  <div><div class="label">واتس اب</div><div class="value">0580068018</div></div>
+  <div class="contact-icon">💬</div>
+</div>
+<div class="contact-row">
+  <div><div class="label">البريد الالكتروني</div><div class="value">tt1091492627@gmail.com</div></div>
+  <div class="contact-icon">✉</div>
+</div>
+<div class="contact-row">
+  <div><div class="label">زيارة مكتبنا</div><div class="value">المملكة العربية السعودية - مرخصة برقم 52</div></div>
+  <div class="contact-icon">📍</div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <h3>شركة ساعد للاستقدام</h3>
+  <img class="flogo" src="images/logo.png" alt="شركة ساعد للاستقدام" style="height:44px;width:auto;margin:0 auto 16px;filter:brightness(0) invert(1);">
+  <p>من أبرز الشركات المتخصصة في توفير القوى البشرية بمعايير دولية ومهنية عالية و وفق الأنظمة الحكومية المعتمدة</p>
+  <div class="fsocial">
+    <a href="#">👻</a><a href="#">𝕏</a><a href="#">◎</a>
+  </div>
+  <h4>تواصل معنا</h4>
+  <div class="fline">🏠 المملكة العربية السعودية - مرخصة من وزارة الموارد البشرية و منصة مساند بترخيص رقم 52</div>
+  <div class="fline">✉ tt1091492627@gmail.com</div>
+  <div class="fline">📞 0592902696 - 0580068018</div>
+  <div class="copyright">© حقوق النشر 2024: <a href="#">شركة ساعد للاستقدام</a></div>
+</footer>
+
+<a class="headset-fab" href="#">🎧</a>
+
+<script>
+  const staff = [
+    "أماني","العنود السالمي","بشاير","منار","منال","حصه","خزامى","رغد",
+    "العنود البشري","غدي","رؤي","ندى","ريوف","شذي","فرح","جواهر","أثير",
+    "غدير","وجد الحربي","فرح","لولو","مريم","ابتسام","جود الحربي","كادي",
+    "نوره","رهام"
+  ];
+  const list = document.getElementById('cs-list');
+  staff.forEach(name=>{
+    const card = document.createElement('div');
+    card.className = 'cs-card';
+    card.innerHTML = `
+      <img class="cs-avatar" src="images/avatar.svg" alt="موظفة خدمة العملاء">
+      <div class="cs-name">${name}</div>
+      <h4>يمكنك التواصل الان عبر الخيارات الاتية</h4>
+      <div class="cs-links">
+        <a href="tel:0592902696">📞</a>
+        <a href="https://wa.me/0580068018">💬</a>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
